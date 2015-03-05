@@ -20,17 +20,29 @@ class RandomFile {
 							+ " kann nicht gelesen werden");
 					continue;
 				}
-				for (String suffix : suffixes) {
-					if (candidate.getName().matches(".+" + suffix + "$")) {
-						files.add(candidate);
-						break;
-					}
+				if (supportedFile(candidate, suffixes)) {
+					files.add(candidate);
+				} else {
+					System.out.println(candidate.getName()
+							+ " not supported file format");
 				}
 			}
 		} else {
 			System.err.println(directory
 					+ " kann nicht gelesen werden, Du Dödel!");
 		}
+	}
+
+	private boolean supportedFile(File candidate, String[] suffixes) {
+		boolean result = false;
+		for (String suffix : suffixes) {
+			if (candidate.getName().toLowerCase()
+					.matches(".+" + suffix.toLowerCase() + "$")) {
+				result = true;
+				break;
+			}
+		}
+		return result;
 	}
 
 	File[] removeTwoFilesAtRandom() {

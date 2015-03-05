@@ -70,22 +70,24 @@ class ThisOrThatFrame extends JFrame {
 	}
 
 	private void callActionControllers(FileImage image) {
-		for(DoActionController ctrl : actionControllers) {
+		for (DoActionController ctrl : actionControllers) {
 			ctrl.doActionOn(image);
 		}
 	}
 
 	void nextPics() {
 		File[] twoFiles = fileFactory.getTwoFiles();
-		imageA = new FileImage(twoFiles[0]);
-		imageB = new FileImage(twoFiles[1]);
-		imageA.setImageScaledDown(screenSize.width / 2, screenSize.height);
-		imageB.setImageScaledDown(screenSize.width / 2, screenSize.height);
-		this.getContentPane().removeAll();
-		this.getContentPane().add(getThisImage());
-		this.getContentPane().add(getThatImage());
-		this.pack();
-		this.setVisible(true);
-		this.setSize(screenSize);
+		if (twoFiles != null) {
+			imageA = new FileImage(twoFiles[0]);
+			imageB = new FileImage(twoFiles[1]);
+			imageA.setImageScaledDown(screenSize.width / 2, screenSize.height);
+			imageB.setImageScaledDown(screenSize.width / 2, screenSize.height);
+			this.getContentPane().removeAll();
+			this.getContentPane().add(getThisImage());
+			this.getContentPane().add(getThatImage());
+			this.pack();
+			this.setVisible(true);
+			this.setSize(screenSize);
+		}
 	}
 }
