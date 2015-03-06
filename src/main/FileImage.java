@@ -1,4 +1,4 @@
-package foo;
+package main;
 
 import static java.awt.Image.SCALE_SMOOTH;
 

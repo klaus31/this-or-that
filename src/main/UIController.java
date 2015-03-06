@@ -1,11 +1,11 @@
-package foo;
+package main;
 
 import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
-public class UIController implements DoActionController {
+public class UIController implements DoRateActionController {
 	private ThisOrThatFrame thisOrThatFrame;
 
 	public UIController() {
@@ -13,7 +13,7 @@ public class UIController implements DoActionController {
 		if (directory == null) {
 			System.exit(0);
 		} else {
-			DoActionController ratePlusOneController = new RatePlusOneController();
+			DoRateActionController ratePlusOneController = new RateCsvController();
 			FileFactory fileFactory = new FilesOfDirectoryAtRandomFactory(
 					directory);
 
@@ -42,8 +42,12 @@ public class UIController implements DoActionController {
 	}
 
 	@Override
-	public void doActionOn(FileImage fileImage) {
+	public void wasChoosen(FileImage fileImage) {
 		thisOrThatFrame.nextPics();
+	}
+	@Override
+	public void wasNotChoosen(FileImage fileImage) {
+		// no action here
 	}
 
 	private File getSelectedDirectory() {
@@ -58,4 +62,5 @@ public class UIController implements DoActionController {
 		}
 		return directory;
 	}
+
 }

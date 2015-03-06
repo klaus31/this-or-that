@@ -1,4 +1,4 @@
-package foo;
+package main;
 
 import java.awt.AWTEvent;
 import java.awt.Component;
@@ -15,11 +15,11 @@ class ThisOrThatFrame extends JFrame {
 	private FileImage imageA;
 	private FileImage imageB;
 	private Dimension screenSize;
-	private DoActionController[] actionControllers;
+	private DoRateActionController[] actionControllers;
 	private FileFactory fileFactory;
 
 	ThisOrThatFrame(String title, FileFactory fileFactory,
-			DoActionController... actionControllers) {
+			DoRateActionController... actionControllers) {
 		super(title);
 		this.actionControllers = actionControllers;
 		this.fileFactory = fileFactory;
@@ -61,17 +61,18 @@ class ThisOrThatFrame extends JFrame {
 		if (event.getID() == MouseEvent.MOUSE_CLICKED) {
 			Point point = ((MouseEvent) event).getPoint();
 			if (hitsImageA(point)) {
-				callActionControllers(imageA);
+				callActionControllers(imageA, imageB);
 			} else if (hitsImageB(point)) {
-				callActionControllers(imageB);
+				callActionControllers(imageB, imageA);
 			}
 		}
 		super.processEvent(event);
 	}
 
-	private void callActionControllers(FileImage image) {
-		for (DoActionController ctrl : actionControllers) {
-			ctrl.doActionOn(image);
+	private void callActionControllers(FileImage choosenImage, FileImage otherImage) {
+		for (DoRateActionController ctrl : actionControllers) {
+			ctrl.wasChoosen(choosenImage);
+			ctrl.wasNotChoosen(otherImage);
 		}
 	}
 

@@ -1,4 +1,4 @@
-package foo;
+package main;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -14,8 +14,7 @@ class RandomFile {
 		if (directory.isDirectory() && directory.canRead()) {
 			File[] candidates = directory.listFiles();
 			for (File candidate : candidates) {
-				if (!candidate.isFile() || !candidate.canRead()
-						|| !candidate.canWrite()) {
+				if (!candidate.isFile() || !candidate.canRead()) {
 					System.out.println(candidate.getName()
 							+ " kann nicht gelesen werden");
 					continue;

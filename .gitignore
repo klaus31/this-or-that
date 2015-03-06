@@ -1,5 +1,9 @@
+.gradle
+.settings
+build
 .classpath
 .gitconfig
 .project
 target
 testdirectory
+/bin
