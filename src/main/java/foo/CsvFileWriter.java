@@ -1,4 +1,4 @@
-package main;
+package foo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,7 +18,7 @@ import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
 public class CsvFileWriter<T> {
-
+	
 	private File file = null;
 
 	public CsvFileWriter() {

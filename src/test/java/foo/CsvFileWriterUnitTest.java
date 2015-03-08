@@ -1,4 +1,4 @@
-package test;
+package foo;
 
 import static org.junit.Assert.assertTrue;
 
@@ -6,12 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.CsvFileWriter;
-
 import org.junit.Test;
 
 public class CsvFileWriterUnitTest {
-	
+
 	@Test
 	public void test() throws IOException {
 		CsvFileWriter<String> csvFW = new CsvFileWriter<>();

@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Create Runnable Jar for Project this-or-that">
+<project default="create_run_jar" name="this-or-that">
 	<property name="version" value="0.0.3" />
 	<target name="create_run_jar">
-		<jar destfile="./target/this-or-that-${version}.jar" filesetmanifest="mergewithoutmain">
-			<manifest>
-				<attribute name="Main-Class" value="main.Main" />
-				<attribute name="Class-Path" value="." />
-			</manifest>
-			<fileset dir="./src" />
-		</jar>
+		<exec command="gradle">
+			<arg line="clean assemble" />
+		</exec>
 	</target>
 </project>

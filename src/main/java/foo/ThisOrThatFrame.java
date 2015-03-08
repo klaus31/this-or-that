@@ -1,4 +1,4 @@
-package main;
+package foo;
 
 import java.awt.AWTEvent;
 import java.awt.Component;
