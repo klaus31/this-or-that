@@ -7,3 +7,7 @@ build
 target
 testdirectory
 /bin
+.idea
+*iml
+gradlew*
+gradle

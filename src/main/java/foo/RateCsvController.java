@@ -39,6 +39,19 @@ class RateCsvController implements DoRateActionController {
 	private CsvFileWriter<String> getCsvFileWriter(FileImage fileImage) {
 		String directory = fileImage.getFile().getParent();
 		File file = new File(directory + File.separator + CSV_FILE_NAME);
+		if(!file.exists()) {
+			System.out.println("Erstelle CSV-Datei: " + file.getAbsolutePath());
+			try {
+				file.createNewFile();
+				if(file.setWritable(true)) {
+					throw new AssertionError("Konnte keine Schreibrechte auf die Datei setzen!");
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+				throw new AssertionError("Konnte die Datei nicht erstellen!");
+			}
+		}
+		System.out.println("Schreibe Ergebnisse in die Datei: " + file.getAbsolutePath());
 		return new CsvFileWriter<>(file);
 	}
 
